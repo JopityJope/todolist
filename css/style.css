@@ -1,0 +1,232 @@
+@import url("https://fonts.googleapis.com/css2?family=VT323&display=swap");
+:root {
+  --primarna-boja-0: #fa61a3;
+  --primarna-boja-1: #f6c2d8;
+  --primarna-boja-2: #f7c9dd;
+  --primarna-boja-3: #f8cfe1;
+  --primarna-boja-4: #f9d6e5;
+  --primarna-boja-5: #faddea;
+  --primarna-boja-6: #fbe4ee;
+  --primarna-boja-7: #fcebf2;
+  --primarna-boja-8: #fdf1f6;
+  --primarna-boja-9: #fef8fb;
+  --sekundarna-boja-1: #aa0000; }
+
+@keyframes blink {
+  0% {
+    opacity: 1; }
+  50% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit; }
+
+html {
+  font-size: 62.5%;
+  /*10px/16px = 0.625*/ }
+  @media only screen and (max-width: 68.75em) {
+    html {
+      font-size: 50%; } }
+
+body {
+  box-sizing: border-box;
+  height: 100vh;
+  position: relative; }
+
+::-webkit-scrollbar {
+  width: 1.5rem; }
+
+::-webkit-scrollbar-track {
+  background: var(--primarna-boja-9); }
+
+::-webkit-scrollbar-thumb {
+  background: var(--primarna-boja-1); }
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primarna-boja-6); }
+
+::selection {
+  background-color: #fff; }
+
+body {
+  font-family: "VT323", monospace;
+  font-style: normal;
+  font-weight: 400;
+  color: var(--primarna-boja-0); }
+
+.heading-primary {
+  font-size: 6rem;
+  padding-top: 0.4rem;
+  text-transform: uppercase; }
+
+.background {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  background: linear-gradient(var(--primarna-boja-1) 0%, var(--primarna-boja-1) 13%, var(--primarna-boja-2) 13%, var(--primarna-boja-2) 25%, var(--primarna-boja-3) 25%, var(--primarna-boja-3) 38%, var(--primarna-boja-4) 38%, var(--primarna-boja-4) 50%, var(--primarna-boja-5) 50%, var(--primarna-boja-5) 61%, var(--primarna-boja-6) 61%, var(--primarna-boja-6) 73%, var(--primarna-boja-7) 73%, var(--primarna-boja-7) 84%, var(--primarna-boja-8) 84%, var(--primarna-boja-8) 95%, var(--primarna-boja-9) 95%); }
+
+.mjesec {
+  position: absolute;
+  height: 10rem;
+  width: 10rem;
+  top: 5%;
+  right: 5%;
+  transform: rotate(180deg); }
+
+.zvijezda {
+  position: absolute;
+  height: 5rem;
+  width: 5rem; }
+
+.zvijezda-blink {
+  animation: blink 0.2s infinite; }
+
+.zvijezda-1 {
+  top: 10%;
+  left: 5%; }
+
+.zvijezda-2 {
+  top: 15%;
+  left: 30%; }
+
+.zvijezda-3 {
+  top: 6%;
+  right: 25%; }
+
+.zvijezda-4 {
+  top: 18%;
+  right: 40%; }
+
+.zvijezda-5 {
+  top: 38%;
+  left: 9%; }
+
+.zvijezda-6 {
+  top: 45%;
+  right: 5%; }
+
+.todo {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  width: 50%;
+  height: 50%;
+  border: 5px solid var(--primarna-boja-0); }
+  @media only screen and (max-width: 56.25em) {
+    .todo {
+      width: 70%; } }
+  @media only screen and (max-width: 37.5em) {
+    .todo {
+      width: 90%; } }
+  .todo--done .todo_text {
+    text-decoration: line-through;
+    text-decoration-thickness: 4px;
+    text-decoration-color: var(--primarna-boja-0); }
+  .todo_heading {
+    padding: 0 1.5rem;
+    height: 7rem;
+    background-color: var(--primarna-boja-1);
+    display: flex;
+    align-items: center;
+    border-bottom: 4px solid var(--primarna-boja-0); }
+  .todo_list {
+    background-color: var(--primarna-boja-9);
+    padding: 2.5rem 1.5rem;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    flex: 2 1 auto;
+    overflow-y: scroll;
+    scrollbar-width: thin;
+    scrollbar-color: var(--primarna-boja-1) var(--primarna-boja-9);
+    scrollbar-base-color: var(--primarna-boja-0); }
+  .todo_item {
+    padding: 0.5rem 0;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    position: relative;
+    height: 2.5rem;
+    display: flex; }
+  .todo_checkbox {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 10;
+    height: 2.5rem;
+    width: 2.5rem; }
+    .todo_checkbox:hover ~ .todo_checkmark {
+      opacity: 0.8; }
+    .todo_checkbox:checked ~ .todo_checkmark {
+      background-color: var(--primarna-boja-0); }
+    .todo_checkbox:checked ~ .todo_checkmark .todo_checkmark-icon {
+      opacity: 1; }
+  .todo_checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 2.5rem;
+    width: 2.5rem;
+    background-color: var(--primarna-boja-1);
+    z-index: 1;
+    display: flex;
+    transition: all 0.2s; }
+    .todo_checkmark-icon {
+      margin: 0.3rem;
+      opacity: 0; }
+  .todo_text {
+    font-size: 3.5rem;
+    margin-right: auto;
+    padding-left: 3.5rem; }
+  .todo_input {
+    display: flex;
+    justify-content: space-between;
+    border-top: 4px solid var(--primarna-boja-0); }
+    .todo_input-box {
+      border: none;
+      background-color: var(--primarna-boja-1);
+      flex: 1 2 auto;
+      padding: 1.5rem;
+      font-family: inherit;
+      font-size: 3rem;
+      color: var(--primarna-boja-0);
+      transition: all 0.2s; }
+      .todo_input-box::placeholder {
+        color: #fff; }
+      .todo_input-box:focus {
+        outline: none;
+        background-color: var(--primarna-boja-4); }
+      .todo_input-box:focus ~ .btn--add {
+        background-color: var(--primarna-boja-4); }
+
+.btn {
+  border: none;
+  cursor: pointer;
+  font-size: 3rem;
+  transition: all 0.2s; }
+  .btn--delete {
+    background-color: transparent; }
+    .btn--delete-icon {
+      height: 2rem;
+      width: 2rem;
+      transition: all 0.2s; }
+      .btn--delete-icon:hover {
+        opacity: 0.6; }
+  .btn--add {
+    background-color: var(--primarna-boja-1);
+    font-family: inherit;
+    color: #fff;
+    padding: 0 2rem; }
+    .btn--add:hover {
+      color: var(--primarna-boja-0); }
